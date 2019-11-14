@@ -1,0 +1,178 @@
+---
+title: "Metadata TURF Meeting"
+author: "Mareli Sanchez y Fabiola Rodriguez"
+date: "11/12/2019"
+output: html_document
+---
+We have compiled a brief tutorial on metadata that stems from the following resources:
+
+* Leah A. Wasser, Megan A. Jones, Marisa Guarinello in https://www.battelleecology.org/dc-metadata-importance-eml-r
+
+* Carl Boettiger in  https://ropensci.github.io/EML/articles/creating-EML.html
+
+* David Blankman and Jeanine McGann in http://im.lternet.edu/sites/im.lternet.edu/files/emlHandbook.pdf
+
+1. The first lines of code walk you through installation of the packages if you have not done so.
+
+```{r setup}
+install.packages("EML")
+library(EML)
+library(readr)
+```
+
+2.For this tutorial, we will be using plant composition data here is the information:
+
+  *  Citation:
+    Humphries H. 2018. Plant species composition data for Saddle grid, 1989 -
+    ongoing.. Environmental Data Initiative.
+    https://doi.org/10.6073/pasta/0b1d440b909072ae4c5e1a4f911f65c2. 
+    Dataset accessed 11/13/2019.  
+    Prepared by: Caitlin White, Yiqi Liu, Alice Qi, William Wilber
+    
+
+```{r data load}
+plants <- read.csv("Data/Pbis_pop.csv")
+```
+
+3. Lets quickly explore the data:
+
+```{r}
+#What is the structure (i.e. what types of variables does it have)?
+str(plants)
+```
+
+```{r}
+# What is the format of this data?
+class(plants)
+```
+
+4. Work with EML in R:
+
+EML stands for Ecological Metadata Language that is designed using XML or Extensible Markup Language. As a language, it will recognize your content when you use "tags" that the XML(anguage) recognizes and then that the EML(anguage) knows are specific descriptors for a metadata file. 
+
+A useful list of questions to consider when including information on your metadata (Blankman and McGann 2003). Next to the question the "tags":
+
+* Who did the research? **creator**
+
+* In general terms, what is the research about? **abstract**
+
+* What are some of the key concepts that refer to the data? **keywords**
+
+* Where was the research done? **coverage/geographicCoverage**
+
+* What time periods are covered in the data? **coverage/temporalCoverage**
+
+* What species are represented in this research/data? **coverage/taxonomicCoverage**
+
+* What methods were used? **methods/methodStep,sampling,qualityControl**
+
+* Is the data being documented part of a larger project **project**
+
+However, in the EML R package we won't be entering these bolded tags, instead we are going to create lists of these attributes. The output EML, will show these tags and our metadata!
+
+4.1 Set the location metadata - *Coverage*
+
+```{r}
+geographicDescription<- "Niwot Ridge" # Specify a general locality name
+coverage<-set_coverage(begin = '1989', end = '2018',
+               sci_names = c("Deschampsia cespitosa","Geum rossii"),
+               geographicDescription = geographicDescription,
+               west = -105.593, east = -105.58678, 
+               north = 40.058564397, south = 40.054398,
+               altitudeMin = 3000, altitudeMaximum = 3300,
+               altitudeUnits = "meter")
+```
+
+4.2 Set the *Methods*
+
+* We can bring our methods written nicely from word into the EML. 
+
+* **TIP** Make a habit of keeping separate R Projects (if working with RStudio) for each task. Keep organized folders where your data and scripts go. If you keep projects, you will save yourself the *getwd()/setwd()* time. 
+
+```{r}
+methods <- set_methods("Methods/Niwot_Ridge_Methods_excerpt_Humphries_2018.docx")
+```
+
+4.3 Set the *Abstract*
+
+* Use a different set- function to indicate a text file that will be created for the abstract. 
+
+```{r}
+abstract<- set_TextType("Abstract/Niwot_Ridge_Abstract_excerpt_Humphries_2018.docx")
+```
+
+4.4 Set the *Attributes* or variables list and definition. The attributes are stored in a .csv file you can create in which you define the name, description, format and units of the variables. For variables with levels (factors), you can also include another object within set_attributes (see https://github.com/ropensci/EML).
+
+```{r}
+NR_attributes <- read_csv("Data/NR_attributes.csv")
+attributeList <- 
+  set_attributes(NR_attributes, 
+                 col_classes = c("numeric", 
+                                 "Date",
+                                 "character",
+                                 "character",
+                                 "numeric",
+                                 "numeric",
+                                 "numeric",
+                                 "numeric"))
+```
+
+4.5 Set the file *physical* format
+
+* A step required to designate an object that contains the data file.
+
+```{r}
+plantsNR<-set_physical("Data/Pbis_pop.csv")
+```
+
+
+4.6 Set the *creator/contact* information
+
+```{r}
+TURF <- eml$creator(
+  individualName = eml$individualName(
+    givenName = "TURF", 
+    surName = "Stern"),
+  electronicMailAddress = "fauxmail@email.com")
+
+```
+
+4.7 Create the *EML*
+
+```{r}
+my_eml <- eml$eml(
+           packageId = uuid::UUIDgenerate(),  
+           system = "uuid",
+           dataset = eml$dataset(
+               title = "Practice EML",
+               pubDate = "2012",
+               abstract = abstract,
+               coverage = coverage,
+               creator = TURF,
+               methods = methods,
+               dataTable = eml$dataTable(
+                 entityName = "Pbis_pop.csv",
+                 entityDescription = "Niwot Ridge Data on Plants",
+                 physical = plantsNR,
+                 attributeList = attributeList)
+               ))
+```
+
+4.8 Validate
+
+```{r}
+eml_validate(my_eml)
+```
+
+* There are some missing elements from the metadata we have not included.
+
+```{r}
+write_eml(my_eml, "eml.xml")
+```
+
+* Read eml
+
+```{r}
+read_eml("eml.xml")
+```
+

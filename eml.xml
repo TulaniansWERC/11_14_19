@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="2e5eda62-06ee-11ea-ab07-3540773cb84b" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/ eml.xsd">
+  <dataset>
+    <title>Practice EML</title>
+    <creator>
+      <individualName>
+        <givenName>TURF</givenName>
+        <surName>Stern</surName>
+      </individualName>
+      <electronicMailAddress>fauxmail@email.com</electronicMailAddress>
+    </creator>
+    <pubDate>2012</pubDate>
+    <abstract>
+      <para>
+  Permanent 1-m^2 plots were established beside each of the 88 Saddle
+  grid stakes in 1989 by Marilyn Walker, who led the sampling effort
+  until 1997. Each plot was located within 2 m of the stake, but always
+  in the same vegetation type as that associated with the stake. The
+  distance and direction from the grid stake were randomly selected, and
+  thus varied from plot to plot. Point quadrat measurements have been
+  made at irregular intervals from 1989 to the present (1989, 1990,
+  1995, 1997, 2006, 2008, and yearly from 2010 onward). 
+</para>
+    </abstract>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Niwot Ridge</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-105.593</westBoundingCoordinate>
+          <eastBoundingCoordinate>-105.5868</eastBoundingCoordinate>
+          <northBoundingCoordinate>40.0586</northBoundingCoordinate>
+          <southBoundingCoordinate>40.0544</southBoundingCoordinate>
+          <boundingAltitudes>
+            <altitudeMinimum>3000</altitudeMinimum>
+            <altitudeMaximum>3300</altitudeMaximum>
+            <altitudeUnits>meter</altitudeUnits>
+          </boundingAltitudes>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>1989</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2018</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+      <taxonomicCoverage>
+        <taxonomicClassification>
+          <taxonRankName>Genus</taxonRankName>
+          <taxonRankValue>Deschampsia</taxonRankValue>
+          <taxonomicClassification>
+            <taxonRankName>Species</taxonRankName>
+            <taxonRankValue>cespitosa</taxonRankValue>
+          </taxonomicClassification>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Genus</taxonRankName>
+          <taxonRankValue>Geum</taxonRankValue>
+          <taxonomicClassification>
+            <taxonRankName>Species</taxonRankName>
+            <taxonRankValue>rossii</taxonRankValue>
+          </taxonomicClassification>
+        </taxonomicClassification>
+      </taxonomicCoverage>
+    </coverage>
+    <methods>
+      <methodStep>
+        <description>
+          <para>
+  “The data in this file through 1997 were manually entered from field
+  data sheets by data management personnel using an EasyEntry form.
+  Subsequently, data were entered into Excel spreadsheets formatted to
+  replicate plot sheets. Point records were converted to plant cover
+  using macros. The resulting files were processed and/or archived on
+  the NWT LTER server.
+</para>
+          <para>
+  In 2006 and thereafter, species and nonspecies codes were recorded
+  using USDA PLANTS codes. Codes used in earlier years were converted to
+  these codes. Codes that begin with “2” are nonspecies.
+</para>
+          <para>
+  Also, lichens and mosses were not identified to species in these
+  years.”
+</para>
+        </description>
+      </methodStep>
+    </methods>
+    <dataTable>
+      <entityName>Pbis_pop.csv</entityName>
+      <entityDescription>Niwot Ridge Data on Plants</entityDescription>
+      <physical>
+        <objectName>Pbis_pop.csv</objectName>
+        <size unit="bytes">200314</size>
+        <authentication method="MD5">fc7502a9c9dc950a0e5f5f41947f08a0</authentication>
+        <dataFormat>
+          <textFormat>
+            <recordDelimiter>&#13;
+</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>plot</attributeName>
+          <attributeDefinition>a space where data was collected</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <numericDomain>
+                <numberType>int</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>year</attributeName>
+          <attributeDefinition>1989 to 2018</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>focal_species</attributeName>
+          <attributeDefinition>many plants</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain/>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>neighbor_species</attributeName>
+          <attributeDefinition>plants that were within the same plot</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain/>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>current_focal_cover</attributeName>
+          <attributeDefinition>percentage of cover in plot in year of collection</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>previous_focal_cover</attributeName>
+          <attributeDefinition>percentage of cover in plot in previous year to collection</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>previous_neighbor_cover</attributeName>
+          <attributeDefinition>percentage of cover in nearest plot</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>season_length_ds</attributeName>
+          <attributeDefinition>duration of season in days</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <numericDomain>
+                <numberType>int</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+    </dataTable>
+  </dataset>
+</eml:eml>

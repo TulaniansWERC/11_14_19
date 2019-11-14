@@ -1,0 +1,9 @@
+﻿attributeName,attributeDefinition,formatString,definition,unit,numberType
+plot,a space where data was collected,,,,int
+year,1989 to 2018,YYYY,,,
+focal_species,many plants,,,,
+neighbor_species,plants that were within the same plot,,,,
+current_focal_cover,percentage of cover in plot in year of collection,,,percentage,real
+previous_focal_cover,percentage of cover in plot in previous year to collection,,,percentage,real
+previous_neighbor_cover,percentage of cover in nearest plot,,,percentage,real
+season_length_ds,duration of season in days,,,,int

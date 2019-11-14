@@ -1,0 +1,8 @@
+Year,Month,Day,Time,Site,Net,Species,Detection,Sex,Age,PB_Type,(Con1)Dumcar,(Con2)Setmag,(Con3)Mnivar,(Con4)Empflt,(Con5)Setcit,(Con6)Carpus,(Con7)Catust,(Con8)Hylmus,(Con9)Seiaur,(PB1)Simple,(PB2)Simple,(PB3)Simple,(PB4)Simple,(PB5)Simple,(PB6)Mobbing,(PB7)Mobbing,(PB8)Mobbing,(PB9)Mobbing,(PB10)Mobbing,Strata,Caught,Observations
+2018,12,3,12:23,DAI2,11,Myiarchus tuberculifer,Aural,U,U,Conspecific,10,,,,1,,,,,,,,,,,,,,,D,No,
+2018,12,3,12:23,DAI2,11,Cardellina pusila,Visual,M,U,Conspecific,3,6,0,,2,4,,6,,,,,,,,,,,,D,No,
+2018,12,3,12:23,DAI2,11,Mniotilta varia,Visual,F,U,Conspecific,,,6,1,2,0,,,,,,,,,,,,,,D,No,
+2018,12,3,12:23,DAI2,11,Setophaga citrina,Aural,U,U,Conspecific,,,,,1,2,,,,,,,,,,,,,,D,No,
+2018,12,3,12:23,DAI2,11,Helmitheros vermivorum,Aural,U,U,Conspecific,,,,,,,,,0,,,,,,,,,,,,Yes,
+2018,12,3,12:23,DAI2,11,Basileuterus culicivorus,Aural,U,U,Conspecific,,,,,,,,,3,3,,,,,,,,,,M,No,"Horizontal body plane, however most warblers have this body position"
+2018,12,3,11:25,DAI2,5,Saltator atriceps,Aural,U,U,Conspecific,7,7,,,,6,6,6,6,,,,,,,,,,,D,No,
